@@ -3,6 +3,11 @@
 * {
     box-sizing: border-box;
 }
+:root {
+    --dark-green: rgb(15, 40, 15);
+    --dark-gray: rgb(40, 40, 40);
+
+}
 .tst {
     border: solid 1px;
     padding: 5px
@@ -15,6 +20,20 @@
 .noscrollbar::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
 }
+.flex {
+    display: flex;
+}
+.inactive {
+    display: none
+}
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 /*BG-layout*/
 body {
     margin: 0;
@@ -29,19 +48,30 @@ body {
 }
 .bg-img {
     position: absolute;
-    z-index: -1;
+    top: 0;
+    z-index: -2;
     width: 100%;
-    height: 100vh;
-    background-color: rgb(217, 217, 217);
+    height: 100%;
 }
 .bg-color {
-    height: 300vh;
+    position: absolute;
+    bottom: -200%;
+    z-index: -1;
+    width: 100%;
+    height: 300%;
     background: repeating-linear-gradient(
         transparent,
-        transparent 25%,
-        rgb(0, 55, 0) 33%,
-        rgb(0, 55, 0)
+        transparent 20%,
+        var(--dark-green) 30%,
+        var(--dark-green)
         )
+}
+.bg-additional {
+    position: absolute;
+    z-index: -3;
+    height: 360%;
+    width: 100%;
+    background-color: brown;
 }
 /*BG-responsive*/
 @media screen and (max-width: 500px) {
@@ -53,92 +83,125 @@ body {
     );
     }
     .bg-color {
-        height: 360vh;
         background: repeating-linear-gradient(
         transparent,
-        transparent 20.8%,
-        brown 27.5%,
+        transparent 25%,
+        brown 33%,
         brown
         )
     }
 }
 
-/*content layout*/
-.flex {
-    display: flex;
-}
+/*content*/
 .content {
-    background-color: pink;
+    position: relative;
+    height: 300%;
+    width: 75%;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.content-bg {
     position: absolute;
     top: 0;
-    right: max(12.5%, calc(50% - 400px));
-    height: 300vh;
-    width: 75%;
-    max-width: 800px;
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 25%,
+        var(--dark-gray) 30%,
+        var(--dark-gray)
+    );
+    
+}
+section {
+    border: solid 1px;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+}
+section:first-of-type {
+    height: 60vh;
+    z-index: -1;
 
-    flex-direction: column;
-    justify-content: space-around;
+    background: rgba(48, 68, 48, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.173);
 }
-.container {
-    height: 25%;
-    scroll-snap-align: center;
+section:not(:first-of-type) {
+    height: 100vh;
 }
-/*content responsive*/
+/*responsive content*/
 @media screen and (max-width: 500px) {
+    section:first-of-type {
+        height: 100vh
+    }
     .content {
-        height: 300vh;
         top: 60vh;
+    }
+    .inactive {
+        display: initial;
     }
 }
 
-/*projects slider*/
-.container:last-of-type {
-    overflow-x: scroll;
-    padding: 0;
-    scroll-snap-type: x mandatory;
+/*snap points*/
+.snappoint-container {
+    position: absolute;
+    width: 100%;
+    height: 300%;
+    flex-direction: column;
 }
-.projects-wrap {
-    padding: 0;
-    position: relative;
-    top: 10%;
-    height: 80%;
-    width: 500%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1;
-}
-.project {
+.snappoint {
+    height: 100vh;
     scroll-snap-align: center;
+}
+/*scroll snap responsive*/
+@media screen and (max-width: 500px) {
+    .snappoint-container {
+        height: 360%
+    }
+    .snappoint:first-of-type {
+        height: 60vh
+    }
+    
 }
 
 /*nav*/
 nav {
     position: fixed;
-    left: 0;
-    top: 12.5vh;
-    width: 12.5vw;
-    height: 75vh;
-    background-color: rgba(0, 0, 255, 0.321);
-    z-index: 1;
+    bottom: 0;
+    width: min(12.5%, 165px);
+    height: 60vh;
 }
-/*explore-btn*/
-.explore-btn {
-    position: absolute;
-    top: 87.5vh;
-    height: 12.5vh;
-    width: 100%;
-    z-index: 1;
-    background-color: yellow;
-}
-/*nav-responsive*/
+/*nav responsive*/
 @media screen and (max-width: 500px) {
     nav {
         top: 0;
-        left: 12.5%;
         width: 75%;
-        height: 12.5vh;
-    }
-    .explore-btn {
-        display: none;
+        height: 10vh;
+        left: 12.5%;
     }
 }
+
+/*projects scroll container*/
+.projects-container {
+    position: relative;
+    height: 80%;
+    width: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+.projects-container > div {
+    width: 500%;
+    height: 100%;
+}
+.project {
+    border: solid 1px;
+    flex-grow: 1;
+    scroll-snap-align: center;
+}
+
+/*responsive images*/
