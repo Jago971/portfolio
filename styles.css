@@ -1,0 +1,144 @@
+
+/*global*/
+* {
+    box-sizing: border-box;
+}
+.tst {
+    border: solid 1px;
+    padding: 5px
+}
+.noscrollbar {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+}
+.noscrollbar::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+/*BG-layout*/
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+.page-wrap {
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+}
+.bg-img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(217, 217, 217);
+}
+.bg-color {
+    height: 300vh;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 25%,
+        rgb(0, 55, 0) 33%,
+        rgb(0, 55, 0)
+        )
+}
+/*BG-responsive*/
+@media screen and (max-width: 500px) {
+    .bg-img {
+        background: repeating-linear-gradient(
+        bisque,
+        bisque 75%,
+        transparent
+    );
+    }
+    .bg-color {
+        height: 360vh;
+        background: repeating-linear-gradient(
+        transparent,
+        transparent 20.8%,
+        brown 27.5%,
+        brown
+        )
+    }
+}
+
+/*content layout*/
+.flex {
+    display: flex;
+}
+.content {
+    background-color: pink;
+    position: absolute;
+    top: 0;
+    right: max(12.5%, calc(50% - 400px));
+    height: 300vh;
+    width: 75%;
+    max-width: 800px;
+
+    flex-direction: column;
+    justify-content: space-around;
+}
+.container {
+    height: 25%;
+    scroll-snap-align: center;
+}
+/*content responsive*/
+@media screen and (max-width: 500px) {
+    .content {
+        height: 300vh;
+        top: 60vh;
+    }
+}
+
+/*projects slider*/
+.container:last-of-type {
+    overflow-x: scroll;
+    padding: 0;
+    scroll-snap-type: x mandatory;
+}
+.projects-wrap {
+    padding: 0;
+    position: relative;
+    top: 10%;
+    height: 80%;
+    width: 500%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1;
+}
+.project {
+    scroll-snap-align: center;
+}
+
+/*nav*/
+nav {
+    position: fixed;
+    left: 0;
+    top: 12.5vh;
+    width: 12.5vw;
+    height: 75vh;
+    background-color: rgba(0, 0, 255, 0.321);
+    z-index: 1;
+}
+/*explore-btn*/
+.explore-btn {
+    position: absolute;
+    top: 87.5vh;
+    height: 12.5vh;
+    width: 100%;
+    z-index: 1;
+    background-color: yellow;
+}
+/*nav-responsive*/
+@media screen and (max-width: 500px) {
+    nav {
+        top: 0;
+        left: 12.5%;
+        width: 75%;
+        height: 12.5vh;
+    }
+    .explore-btn {
+        display: none;
+    }
+}
