@@ -31,9 +31,8 @@ body {
 }
 i {
     color: var(--icon);
-    font-size: 2rem;
 }
-.nocrollbar {
+.noscrollbar {
     -ms-overflow-style: none; /* for Internet Explorer Edge */
     scrollbar-width: none; /* for Firefox */
 }
@@ -207,7 +206,6 @@ body {
     font-family: roboto;
 }
 .text {
-    border: solid 1px blue;
     position: absolute;
     top: 0;
     z-index: 1;
@@ -225,7 +223,6 @@ body {
 .description {
     text-align: center;
     color: white;
-    font-size: 1.5rem;
 }
 
 .title h1, .title p {
@@ -233,21 +230,10 @@ body {
     color: white;
 }
 .title h1 {
-    font-size: 5rem;
-    font-weight: 200;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
 }
-.title p {
-    font-size: 1.5rem;
-    font-weight: 100;
-    letter-spacing: 0.25rem;
-}
-.description p {
-    font-weight: 300;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-}
+
 
 /*bg-color main text*/
 .text-body {
@@ -256,12 +242,10 @@ body {
     bottom: 0;
     height: 80vh;
     width: 100%;
-    border: solid 1px white;
     z-index: 1;
 }
 .text-body > div {
     margin: 0;
-    border: solid 1px white;
     height: 100%;
     width: 100%
 }
@@ -271,9 +255,6 @@ body {
     padding-top: 25px;
 }
 /*2nd page*/
-.description, .title {
-    border: solid 1px red;
-}
 a {
     display: inline-block;
     text-decoration: none;
@@ -305,10 +286,163 @@ a {
 }
 .project {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 0.75;
     border: solid 1px white;
     background-color: aqua;
 }
 .coming-soon {
     background-color: black;
+}
+@media screen and (max-width: 1000px) {
+    .scroll-wrap {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 700px) {
+    .scroll-wrap {
+        grid-template-columns: 1fr;
+    }
+    .project {
+        aspect-ratio: unset;
+        height: 80vh;
+    }
+}
+
+/*font-sizes*/
+i {
+    font-size: 2rem;
+}
+.title h1 {
+    font-size: 5rem;
+    font-weight: 200;
+}
+.title p {
+    font-size: 1.5rem;
+    font-weight: 100;
+    letter-spacing: 0.25rem;
+}
+.description p {
+    font-weight: 300;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+}
+/*resp h1 page 1*/
+@media screen and (max-width: 785px) {
+    .title h1 {
+        font-size: 4.5rem;
+    }
+}
+@media screen and (max-width: 715px) {/*added description p sizing*/
+    .title h1 {
+        font-size: 4rem;
+    }
+    .description p {
+        font-size: 1.25rem;
+    }
+}
+@media screen and (max-width: 960px) {/*added description p sizing*/
+    .description p {
+        font-size: 1.15rem;
+    }
+}
+@media screen and (max-height: 900px) {
+    .description {
+        margin-top: 15px;
+    }
+    
+}
+@media screen and (max-width: 645px) {
+    .title h1 {
+        font-size: 3.5rem;
+    }
+}
+@media screen and (max-width: 575px) {
+    .title h1 {
+        font-size: 3rem;
+    }
+}
+@media screen and (max-width: 505px) {
+    .title h1 {
+        font-size: 2.5rem;
+    }
+}
+@media screen and (max-width: 435px) {
+    .title h1 {
+        font-size: 2rem;
+    }
+}
+/*resp h1 p 1*/
+@media screen and (max-width: 650px) {
+    .title:first-of-type p {
+        font-size: 1.25rem;
+        letter-spacing: 0.25rem;
+    }
+}
+@media screen and (max-width: 580px) {
+    .title:first-of-type p {
+        font-size: 1rem;
+        letter-spacing: 0.25rem;
+    }
+}
+@media screen and (max-width: 515px) {/*added description p sizing*/
+    .title:first-of-type p {
+        font-size: 0.9rem;
+        letter-spacing: 0.2rem;
+    }
+    .description p {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 460px) {
+    .title:first-of-type p {
+        font-size: 0.9rem;
+        letter-spacing: 0.15rem;
+    }
+}
+/*resp title 2nd page*/
+@media screen and (max-width: 1035px) {
+    .second-title h1 {
+        font-size: 4.5rem;
+    }
+}
+@media screen and (max-width: 940px) {
+    .second-title h1 {
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width: 845px) {
+    .second-title h1 {
+        font-size: 3.5rem;
+    }
+}
+@media screen and (max-width: 750px) {
+    .second-title h1 {
+        font-size: 3rem;
+    }
+}
+@media screen and (max-width: 655px) {
+    .second-title h1 {
+        font-size: 2.5rem;
+    }
+}
+@media screen and (max-width: 560px) {
+    .second-title h1 {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 465px) {
+    .second-title h1 {
+        font-size: 1.7rem;
+    }
+}
+/*resp title p 2nd page*/
+@media screen and (max-width: 1035px) {
+    .second-title h1 {
+        font-size: 4.5rem;
+    }
+}
+@media screen and (max-width: 780px) {
+    .second-title h1 {
+        font-size: 4rem;
+    }
 }
