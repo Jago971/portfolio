@@ -11,9 +11,11 @@
     --icon-brdr: solid 1px rgba(240, 240, 240, 0.5);
     --icon-shadow: 0px 0px 25px 5px rgba(255, 255, 255, 0.5);
 
-    --bg-color-1: rgb(39, 67, 39);
+    --bg-color-1: rgb(117, 131, 81);
     --bg-color-2: rgb(160, 191, 184);
     --bg-color-3: rgb(167, 156, 118);
+    --bg-color-transition-1: rgb(190, 190, 190);
+    --bg-color-transition-2: rgb(196, 187, 155);
 }
 body {
     margin: 0;
@@ -83,7 +85,7 @@ i {
         transparent,
         var(--bg-color-1) 15%,
         var(--bg-color-1) 80%,
-        var(--bg-color-2) 90%,
+        var(--bg-color-transition-1) 96%,
         transparent
     )
 }
@@ -92,7 +94,7 @@ i {
         transparent,
         var(--bg-color-2) 15%,
         var(--bg-color-2) 80%,
-        var(--bg-color-3) 90%,
+        var(--bg-color-transition-2) 96%,
         transparent
     )
 }
@@ -175,7 +177,7 @@ i {
     height: 90vh;
     bottom: 0;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    clip-path: inset(0px -32px -32px -32px);
+    clip-path: inset(0px -35px -35px -35px);
 }
 
 /*nav*/
@@ -193,12 +195,16 @@ img {
     width: 100%;
     object-fit: cover;
 }
+img:first-of-type {
+    position: absolute;
+}
 
 /*text*/ 
 body {
     font-family: roboto;
 }
 .text {
+    border: solid 1px blue;
     position: absolute;
     top: 0;
     z-index: 1;
@@ -215,22 +221,10 @@ body {
 }
 .description {
     text-align: center;
-    width: 70%;
     color: white;
     font-size: 1.5rem;
 }
-a {
-    display: block;
-    text-decoration: none;
-    color: rgb(61, 61, 61);
-    background-color: var(--icon-bg);
-    box-shadow: var(--icon-shadow);
-    border: var(--icon-brdr);
-    border-radius: 5px;
-    margin: 10px auto;
-    padding: 5px 10px;
-    width: fit-content
-}
+
 .title h1, .title p {
     margin: 0;
     color: white;
@@ -250,4 +244,42 @@ a {
     font-weight: 300;
     font-size: 1.25rem;
     letter-spacing: 0.05rem;
+}
+
+/*bg-color main text*/
+.text-body {
+    position: absolute;
+    bottom: 0;
+    height: 80vh;
+    width: 100%;
+    border: solid 1px white;
+    z-index: 1;
+}
+.text-body p {
+    margin: 0 auto;
+    border: solid 1px white;
+    height: 100%;
+    width: 70%;
+}
+
+/*1st page*/
+.call {
+    padding-top: 25px;
+}
+/*2nd page*/
+.description, .title {
+    border: solid 1px red;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(61, 61, 61);
+    background-color: var(--icon-bg);
+    border-radius: 3px;
+    margin: 5px;
+    padding: 1px 5px;
+    width: fit-content
+}
+.text p {
+    margin: 0;
 }
