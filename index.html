@@ -16,7 +16,7 @@
     <div class="page-wrap noscrollbar">
         <div class="bg-container">
             <div class="page">
-                <div class="split"></div>
+                <div id="about-preview" class="split"></div>
                 <div class="split"></div>
                 <div class="bg-image background">
                     <img src="images/church.jpg" alt="image of modern church">
@@ -24,7 +24,7 @@
                 <div class="bg-color color-1 background"></div>
             </div>
             <div class="page">
-                <div class="split"></div>
+                <div id="skill-preview" class="split"></div>
                 <div class="split"></div>
                 <div class="bg-image background">
                     <img src="images/wet_fjord.jpg" alt="image of misty fjord">
@@ -32,7 +32,7 @@
                 <div class="bg-color color-2 background"></div>
             </div>
             <div class="page">
-                <div class="split"></div>
+                <div id="projects-preview" class="split"></div>
                 <div class="split"></div>
                 <div class="bg-image background">
                     <img src="images/ceiling.jpg" alt="image of cathedral ceiling">
@@ -43,15 +43,15 @@
         <div class="content-container">
             <nav class="flex">
                 <i class="fa-solid fa-bars"></i>
-                <div class="icon icon-about">
+                <a class="icon icon-about" href="#about-preview">
                     <i class="fa-solid fa-user"></i>
-                </div>
-                <div class="icon icon-skill">
+                </a>
+                <a class="icon icon-skill" href="#skill-preview">
                     <i class="fa-solid fa-book"></i>
-                </div>
-                <div class="icon icon-proj">
+                </a>
+                <a class="icon icon-proj" href="#projects-preview">
                     <i class="fa-solid fa-hammer"></i>
-                </div>
+                </a>
             </nav>
             <div class="content">
                 <div class="hide-glass flex">
@@ -61,7 +61,7 @@
                     <div class="title flex">
                         <p>Thanks for taking a look...</p>
                         <h1>MATT MANNINGS</h1>
-                        <p>...at my iOAcadmey portofilio.</p>
+                        <p>...at my iOAcademy portofilio.</p>
                     </div>
                     <div class="description">
                         <p>I want to take the skills I'll learn to create fully fledged web applications to provide solutions for myself and others.</p> 
@@ -71,7 +71,7 @@
                 <div class="glass background"></div>
                 <div class="bg-content background">
                     <div class="text-body">
-                        <div></div>
+                        
                     </div>
                 </div>
                 <div class="bg-shadow background"></div>
@@ -84,20 +84,45 @@
                     <div class="title flex">
                         <p>What I've already learned...</p>
                         <h1>SKILLS & LEARNING</h1>
-                        <p>...and what I'm currently working on.</p>
+                        <p>...and what I'm exploring now.</p>
                     </div>
                     <div class="description skills">
                         <p>I took up coding mid January 2024 lacking a plan.
-                            I started with <a href="">FreeCodeCademy</a> along side <a href="">CodeCademy</a> and others.
+                            I started with <a href="https://www.freecodecamp.org/" target="_blank">FreeCodeCamp</a> along side <a href="https://www.codecademy.com/" target="_blank">CodeCademy</a> and others.
                         </p> 
-                        <p class="second">I'm now just embarking on the <a href="">iOAcademy</a><a href="">FullStackTrack.</a></p>
+                        <p class="second">I'm now just embarking on the <a href="https://io-academy.uk/" target="_blank">iOAcademy</a><a href="https://io-academy.uk/courses/full-stack-track/" target="_blank">FullStackTrack.</a></p>
                     </div>
 
                 </div>
                 <div class="glass background"></div>
                 <div class="bg-content background">
-                    <div class="text-body">
-                        <div></div>
+                    <div class="text-body flex">
+                        <div class="skill-selector-wrap flex">
+                            <label for="HTML" class="skill-btn html">
+                                <input type="radio" checked="checked" id="HTML" name="radio">
+                                <span class="checkmark"></span>
+                                <div class="skill-tree html"></div>
+                            </label>
+                            <label for="CSS" class="skill-btn css">
+                                <input type="radio" id="CSS" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="JS" class="skill-btn js">
+                                <input type="radio" id="JS" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label for="PHP" class="skill-btn php">
+                                <input type="radio" id="PHP" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                            
+                        
+                        
+                        <div class="skill-tree html"></div>
+                        <div class="skill-tree css"></div>
+                        <div class="skill-tree js"></div>
+                        <div class="skill-tree php"></div>
                     </div>
                 </div>
                 <div class="bg-shadow background"></div>
@@ -110,10 +135,9 @@
                     <div class="title flex">
                         <p>What I've made so far...</p>
                         <h1>PROJECTS</h1>
-                        <p>...and what .i'm working on.</p>
+                        <p>...and what I'm working on.</p>
                     </div>
                     <div class="description">
-                        <!--<p>I'm enrolled on the iOAcademy <a href="">Full Stack Track.</a></p>-->
                         <p>I have projects demonstrating the use of html, css, javascript.</p> 
                         <p class="second">There will soon be projects demonstrating the use of php and other languages</p>
                     </div>
@@ -121,19 +145,61 @@
                 </div>
                 <div class="glass background"></div>
                 <div class="bg-content background">
-                    <div class="text-body">
+                    <div class="text-body flex">
+                        <div class="scroll-nav flex">
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                        </div>
                         <div class="project-scroll-window noscrollbar">
-                            <div class="scroll-wrap">
-                                <div class="project"></div>
-                                <div class="project"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
-                                <div class="project coming-soon"></div>
+                            <div class="scroll-wrap flex">
+                                <div class="project flex">
+                                    <div class="proj-half">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="proj-half flex">
+                                        <h1>Coming Soon</h1>
+                                        <p>A project will arrive here soon. A project will arrive here soon. A project will arrive here soon.</p>
+                                    </div>
+                                </div>
+                                <div class="project flex">
+                                    <div class="proj-half">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="proj-half flex">
+                                        <h1>Coming Soon</h1>
+                                        <p>A project will arrive here soon. A project will arrive here soon. A project will arrive here soon.</p>
+                                    </div>
+                                </div>
+                                <div class="project flex">
+                                    <div class="proj-half">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="proj-half flex">
+                                        <h1>Coming Soon</h1>
+                                        <p>A project will arrive here soon. A project will arrive here soon. A project will arrive here soon.</p>
+                                    </div>
+                                </div>
+                                <div class="project flex">
+                                    <div class="proj-half">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="proj-half flex">
+                                        <h1>Coming Soon</h1>
+                                        <p>A project will arrive here soon. A project will arrive here soon. A project will arrive here soon.</p>
+                                    </div>
+                                </div>
+                                <div class="project flex">
+                                    <div class="proj-half">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="proj-half flex">
+                                        <h1>Coming Soon</h1>
+                                        <p>A project will arrive here soon. A project will arrive here soon. A project will arrive here soon.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

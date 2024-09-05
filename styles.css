@@ -157,6 +157,7 @@ i {
 }
 .hide-glass:hover + .preview {
     opacity: 0;
+    animation: unset;
 }
 .hide-glass:hover {
     opacity: 0;
@@ -186,6 +187,8 @@ img {
 }
 img:first-of-type {
     position: absolute;
+    width: 102.5%;
+    left: -2.5%
 }
 
 /*text*/ 
@@ -200,13 +203,19 @@ body {
     width: 100%;
     padding: 2vw;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    opacity: 0;
+    animation: fade-in 3s forwards;
+    animation-delay: 0.3s;
+}
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 .preview > div {
     width: 100%;
 }
 .title {
-    flex-grow: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -229,16 +238,15 @@ body {
 /*bg-color main text*/
 .text-body {
     position: absolute;
-    padding: 0 2vw;
+    padding: clamp(1rem, 2vw, 2rem);
     bottom: 0;
-    height: 80vh;
+    height: 75vh;
     width: 100%;
     z-index: 1;
+    border: solid 1px white
 }
-.text-body > div {
-    margin: 0;
-    height: 100%;
-    width: 100%
+.text-body:last-of-type {
+    gap: clamp(1rem, 2vw, 2rem);
 }
 a {
     display: inline-block;
@@ -248,47 +256,131 @@ a {
     border-radius: 3px;
     margin: 5px;
     padding: 1px 5px;
-    width: fit-content
+    width: fit-content;
+    transition: all 0.1s;
+}
+a:hover {
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        background-color: white;
 }
 
 /*3rd page*/
 .project-scroll-window {
+    position: relative;
     border: solid 1px white;
     height: 100%;
     width: 100%;
     margin: 0;
-    overflow-y: scroll
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 .scroll-wrap {
-    height: fit-content;
+    position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2vw;
+    height: 500%;
+    flex-direction: column;
+}
+.scroll-nav {
+    position: relative;
+    width: 10%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--icon-bg);
+    border: var(--icon-brdr);
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .project {
+    position: relative;
     width: 100%;
-    aspect-ratio: 0.75;
-    border: solid 1px white;
-    background-color: aqua;
+    height: 100%;
+    background-color: var(--icon-bg);
+    scroll-snap-align: center;
+}
+.proj-half {
+    position: relative;
+    flex-grow: 1;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(1rem, 2vw, 2rem);
+    color: white;
+}
+.proj-half img {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.proj-half h1 {
+    font-size:  clamp(2rem, 8vw, 4rem);
+    font-weight: 400;
+    margin:0;
+}
+.proj-half p {
+    font-size:  clamp(1rem, 4vw, 2rem);
+    margin:0;
+    font-weight: 200;
 }
 .coming-soon {
     background-color: black;
 }
-@media screen and (max-width: 1000px) {
-    .scroll-wrap {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.indicator {
+    width: 50%;
+    aspect-ratio: 1;
+    border: var(--icon-brdr);
+    background-color: var(--icon-bg);
+    border-radius: 5px;
 }
-@media screen and (max-width: 700px) {
+/*project window responsive*/
+@media screen and (max-width: 1000px) {
+    .project-scroll-window {
+        overflow-x: scroll;
+        overflow-y: initial;
+        scroll-snap-type: x mandatory;
+    }
     .scroll-wrap {
-        grid-template-columns: 1fr;
+        width: 500%;
+        height: 100%;
+        flex-direction: row;
     }
     .project {
-        aspect-ratio: unset;
-        height: 80vh;
+        flex-direction: column
+    }
+    .proj-half {
+        width: 100%;
+        height: 50%;
+        border: solid 1px red
+    }
+    .text-body:last-of-type {
+        flex-direction: column;
+    }
+    .scroll-nav {
+        width: 100%;
+        height: 10%;
+        flex-direction: row;
+    }
+    .indicator {
+        height: 50%;
+        width: unset;
     }
 }
+
+
+
+
+
+
 
 /*font-sizing*/
 i {
@@ -306,7 +398,7 @@ h1 {
 }
 .description p {
     font-weight: 200;
-    font-size: clamp(1.1rem, 2.25vw, 1.5rem);
+    font-size: clamp(0.9rem, 2.25vw, 1.5rem);
 }
 
 /*second page*/
@@ -319,13 +411,13 @@ h1 {
 /*nav*/
 nav {
     justify-content: center;
-    height: 10vh;
-    width: 10vh;
+    height: 5vh;
+    width: 5vh;
     border: var(--icon-brdr);
     border-radius: 5px;
     position: fixed;
-    left: calc(50% - 5vh);
-    margin: 5vh auto;
+    left: calc(50% - 2.5vh);
+    margin: 2.5vh auto;
     align-items: center;
     transition: all 0.3s;
     background-color: var(--icon-bg);
@@ -350,12 +442,14 @@ nav:not(:hover) {
 nav > i {
     color: var(--icon);
     opacity: 1;
-    font-size: 8vh;
+    font-size: 4vh;
     transition: all 0.2s;
 }
 nav:hover {
     left: calc(50% - 14vh);
     width: 28vh;
+    height: 10vh;
+
     background-color: rgba(240, 248, 255, 0.395);
 }
 .icon-about {
@@ -438,7 +532,7 @@ nav:hover .icon:hover {
         -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
         -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
         box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
-        background-color: white;;
+        background-color: white;
 }
 @keyframes pulse {
     0% {
@@ -459,3 +553,75 @@ nav:hover .icon:hover {
     }
 }
 
+
+
+
+/*skills page 2nd*/
+/* The container */
+.skill-selector-wrap {
+    position: relative;
+    width: 10%;
+    height: 100%;
+    flex-direction: column;
+}
+.skill-btn {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: solid 1px white;
+  }
+  /* Hide the browser's default radio button */
+  .skill-btn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  /* Create a custom radio button */
+  .checkmark {
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .skill-btn:hover input ~ .checkmark {
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .skill-btn input:checked ~ .checkmark {
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .skill-btn input:checked ~ .checkmark {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: 900%;
+  }
+  .html input:checked ~ .checkmark {
+    background-color: red;
+  }
+  .css input:checked ~ .checkmark {
+    background-color: blue;
+  }
+  .js input:checked ~ .checkmark {
+    background-color: yellow;
+  }
+  .php input:checked ~ .checkmark {
+    background-color: lightblue;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .skill-btn .checkmark {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      background: white;
+  }
