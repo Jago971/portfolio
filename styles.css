@@ -16,6 +16,9 @@
     --bg-color-3: rgb(167, 156, 118);
     --bg-color-transition-1: rgb(190, 190, 190);
     --bg-color-transition-2: rgb(196, 187, 155);
+
+    --body-bg: rgb(50, 50, 50);
+    --body-brdr: solid 1px rgb(65, 65, 65);
 }
 body {
     margin: 0;
@@ -238,15 +241,14 @@ body {
 /*bg-color main text*/
 .text-body {
     position: absolute;
-    padding: clamp(1rem, 2vw, 2rem);
+    padding: 2vw;
     bottom: 0;
     height: 75vh;
     width: 100%;
     z-index: 1;
-    border: solid 1px white
 }
 .text-body:last-of-type {
-    gap: clamp(1rem, 2vw, 2rem);
+    gap: 2vw;
 }
 a {
     display: inline-block;
@@ -269,12 +271,12 @@ a:hover {
 /*3rd page*/
 .project-scroll-window {
     position: relative;
-    border: solid 1px white;
     height: 100%;
     width: 100%;
     margin: 0;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    border-radius: 5px;
 }
 .scroll-wrap {
     position: relative;
@@ -288,8 +290,8 @@ a:hover {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: var(--icon-bg);
-    border: var(--icon-brdr);
+    background-color: var(--body-bg);
+    border: var(--body-brdr);
     border-radius: 5px;
     flex-direction: column;
     justify-content: space-evenly;
@@ -299,7 +301,7 @@ a:hover {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--icon-bg);
+    background-color: var(--body-bg);
     scroll-snap-align: center;
 }
 .proj-half {
@@ -311,7 +313,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: clamp(1rem, 2vw, 2rem);
+    padding: 2vw;
     color: white;
 }
 .proj-half img {
@@ -338,8 +340,8 @@ a:hover {
 .indicator {
     width: 50%;
     aspect-ratio: 1;
-    border: var(--icon-brdr);
-    background-color: var(--icon-bg);
+    border: var(--body-brdr);
+    background-color: var(--icon);
     border-radius: 5px;
 }
 /*project window responsive*/
@@ -360,7 +362,6 @@ a:hover {
     .proj-half {
         width: 100%;
         height: 50%;
-        border: solid 1px red
     }
     .text-body:last-of-type {
         flex-direction: column;
@@ -517,12 +518,16 @@ nav:hover .icon-proj {
         }
 }
 nav:hover .icon {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 nav:hover .icon > i {
+    margin: 0;
+    position: absolute;
     color: var(--icon);
     font-size: 5vh;
     z-index: 3;
@@ -563,65 +568,123 @@ nav:hover .icon:hover {
     width: 10%;
     height: 100%;
     flex-direction: column;
+    background-color: var(--body-bg);
+    border-radius: 5px;
+    border: var(--body-brdr);
 }
-.skill-btn {
+.skill-btn-container {
     height: 100%;
     width: 100%;
-    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: solid 1px white;
   }
   /* Hide the browser's default radio button */
-  .skill-btn input {
+  .skill-btn-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
   }
   /* Create a custom radio button */
-  .checkmark {
+  .skill-btn {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    > i {
+        z-index: 0;
+        font-size: clamp(2rem, 5vw, 4rem)
+    }
+  }
+  .skill-btn i {
+    transition: all 0.3s;
+  }
+  .skill-btn:hover i {
+    color: white;
   }
   
   /* On mouse-over, add a grey background color */
-  .skill-btn:hover input ~ .checkmark {
+  .skill-btn-container:hover input ~ .skill-container {
   }
   
   /* When the radio button is checked, add a blue background */
-  .skill-btn input:checked ~ .checkmark {
+  .skill-btn-container input:checked ~ .skill-container {
   }
   
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
+  
+  .skill-container {
+    display: none;
+    color: white;
+    padding: 2vw;
+    flex-direction: column;
+    justify-content: space-between;
   }
   
   /* Show the indicator (dot/circle) when checked */
-  .skill-btn input:checked ~ .checkmark {
+  .skill-btn-container input:checked ~ .skill-container {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: calc(100% + 2vw);
     height: 100%;
     width: 900%;
+    border-radius: 5px;
   }
-  .html input:checked ~ .checkmark {
-    background-color: red;
+  .html input:checked ~ .skill-container {
+    display: flex;
   }
-  .css input:checked ~ .checkmark {
-    background-color: blue;
+  .css input:checked ~ .skill-container {
+    display: flex;
   }
-  .js input:checked ~ .checkmark {
-    background-color: yellow;
+  .js input:checked ~ .skill-container {
+    display: flex;
   }
-  .php input:checked ~ .checkmark {
-    background-color: lightblue;
+  .php input:checked ~ .skill-container {
+    display: flex;
+  }
+  .html input:checked ~ .skill-btn i {
+    color: rgb(250, 100, 100);
+  }
+  .css input:checked ~ .skill-btn i {
+    color: rgb(100, 100, 250);
+  }
+  .js input:checked ~ .skill-btn i {
+    color: rgb(250, 250, 100);
+  }
+  .php input:checked ~ .skill-btn i {
+    color: rgb(150, 250, 250);
+  }
+
+  @media screen and (max-width: 800px) {
+    .text-body:nth-of-type(2) {
+        flex-direction: column;
+    }
+    .skill-selector-wrap {
+        width: 100%;
+        height: 10%;
+        flex-direction: row;
+    }
+    .skill-btn-container input:checked ~ .skill-container {
+        left: 0;
+        top:  calc(100% + 2vw);
+        height: 900%;
+        width: 100%;
+    }
   }
   
-  /* Style the indicator (dot/circle) */
-  .skill-btn .checkmark {
-       top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      background: white;
+/*don't know why im styling the first page text here*/
+  .about {
+    color: white;
+    padding: 2vw 5vw;
+    flex-direction: column;
+    justify-content: space-between;
+    h1 {
+        margin: 0;
+        font-weight: 400
+    }
+    p {
+        margin: 0;
+        font-weight: 200;
+        font-size: clamp(1rem, 2.25vw, 1.3rem);
+    }
   }
