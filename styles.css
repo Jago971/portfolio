@@ -139,9 +139,8 @@ i {
     height: 5vh;
     width: 5vh;
     border-radius: 5px;
-    background-color: rgba(240, 240, 240, 0.7);
-    border: solid 1px rgba(240, 240, 240, 0.5);
-    box-shadow: 0px 0px 25px 5px rgba(255, 255, 255, 0.5);
+    background-color: var(--icon-bg);
+    border: var(--icon-brdr);
     position: relative;
     margin: 0 auto;
     top: 40vh;
@@ -149,6 +148,9 @@ i {
     transition: all 0.3s;
     justify-content: center;
     align-items: center;
+}
+.hide-glass:not(:hover) {
+    animation: pulse 3s infinite;
 }
 .hide-glass:hover + .preview + .glass{
     opacity: 0;
@@ -311,6 +313,149 @@ h1 {
 .second-preview {
     h1 {
         font-size: clamp(2.4rem, 7vw, 5rem);
+    }
+}
+
+/*nav*/
+nav {
+    justify-content: center;
+    height: 10vh;
+    width: 10vh;
+    border: var(--icon-brdr);
+    border-radius: 5px;
+    position: fixed;
+    left: calc(50% - 5vh);
+    margin: 5vh auto;
+    align-items: center;
+    transition: all 0.3s;
+    background-color: var(--icon-bg);
+    z-index: 1;
+}
+nav:not(:hover) {
+    animation: pulse 3s infinite;
+    animation-delay: 0.3s;
+}
+.icon {
+    position: absolute;
+    height: 8vh;
+    width: 8vh;
+    border-radius: 3px;
+    aspect-ratio: 0;
+    opacity: 0;
+    transition: width 3s;
+    left: 1vh;
+    background-color: var(--icon-bg);
+    border: var(--icon-brdr);
+}
+nav > i {
+    color: var(--icon);
+    opacity: 1;
+    font-size: 8vh;
+    transition: all 0.2s;
+}
+nav:hover {
+    left: calc(50% - 14vh);
+    width: 28vh;
+    background-color: rgba(240, 248, 255, 0.395);
+}
+.icon-about {
+    z-index: 3
+}
+.icon-skills {
+    z-index: 2;
+}
+.icon-proj {
+    z-index: 1;
+}
+nav:hover i {
+    opacity: 0;
+}
+nav:hover .icon-about {
+    aspect-ratio: 1;
+    animation: navOpacAnim 0.3s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+nav:hover .icon-skill {
+    animation: icon-skill 0.2s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+nav:hover .icon-proj {
+    animation: icon-proj 0.4s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+@keyframes navOpacAnim {
+    from {
+        aspect-ratio: 1;
+        opacity: 0;
+        }
+    to {
+        aspect-ratio: 1;
+        opacity: 1;
+        }
+}
+@keyframes icon-skill {
+    0% {
+        aspect-ratio: 1;
+        opacity: 1;
+        left: 1vh
+        }
+    50% {opacity: 0;}
+    100% {
+        aspect-ratio: 1;
+        opacity: 1;
+        left: 10vh;
+        }
+}
+@keyframes icon-proj {
+    0% {
+        aspect-ratio: 1;
+        opacity: 1;
+        left: 1vh
+        }
+    50% {opacity: 0;}
+    100% {
+        aspect-ratio: 1;
+        opacity: 1;
+        left: 19vh;
+        }
+}
+nav:hover .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+nav:hover .icon > i {
+    color: var(--icon);
+    font-size: 5vh;
+    z-index: 3;
+    opacity: 1;
+}
+nav:hover .icon:hover {
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        background-color: white;;
+}
+@keyframes pulse {
+    0% {
+        -webkit-box-shadow: none;
+        -moz-box-shadow:  none;
+        box-shadow:  none;
+    }
+    50% {
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.75);
+        background-color: white;
+    }
+    0% {
+        -webkit-box-shadow: none;
+        -moz-box-shadow:  none;
+        box-shadow:  none;
     }
 }
 
