@@ -696,6 +696,9 @@ nav:hover .icon:hover {
   .about {
     color: white;
     padding: 5vw;
+    padding-bottom: 0;
+    margin-bottom: 5vw;
+    height: 70vh;
     flex-direction: column;
     justify-content: space-between;
     h1 {
