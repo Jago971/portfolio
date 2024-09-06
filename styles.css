@@ -695,9 +695,9 @@ nav:hover .icon:hover {
 /*don't know why im styling the first page text here*/
   .about {
     color: white;
-    padding: 5vw;
+    margin: 0 5vw 5vw 5vw;
     padding-bottom: 0;
-    margin-bottom: 5vw;
+    width: calc(100% - 10vw);
     height: 70vh;
     flex-direction: column;
     justify-content: space-between;
