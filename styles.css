@@ -604,14 +604,6 @@ nav:hover .icon:hover {
     color: white;
   }
   
-  /* On mouse-over, add a grey background color */
-  .skill-btn-container:hover input ~ .skill-container {
-  }
-  
-  /* When the radio button is checked, add a blue background */
-  .skill-btn-container input:checked ~ .skill-container {
-  }
-  
   
   .skill-container {
     display: none;
@@ -655,6 +647,23 @@ nav:hover .icon:hover {
     color: rgb(150, 250, 250);
   }
 
+  .skill-container {
+    position: relative;
+    overflow-y: scroll;
+  }
+  /* ===== Scrollbar CSS ===== */
+  * {
+    scrollbar-color: var(--icon) var(--body-bg);
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--body-bg);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--icon);
+    border-radius: 10px;
+  }
+
   @media screen and (max-width: 800px) {
     .text-body:nth-of-type(2) {
         flex-direction: column;
@@ -675,7 +684,7 @@ nav:hover .icon:hover {
 /*don't know why im styling the first page text here*/
   .about {
     color: white;
-    padding: 2vw 5vw;
+    padding: 5vw;
     flex-direction: column;
     justify-content: space-between;
     h1 {
