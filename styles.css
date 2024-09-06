@@ -649,7 +649,14 @@ nav:hover .icon:hover {
 
   .skill-container {
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
+    padding-top: 0;
+    h1 {
+        margin-top: 0
+    }
+    p {
+        font-weight: 300;
+    }
   }
   /* ===== Scrollbar CSS ===== */
   * {
@@ -662,6 +669,10 @@ nav:hover .icon:hover {
   *::-webkit-scrollbar-thumb {
     background-color: var(--icon);
     border-radius: 10px;
+  }
+  .text-body.about {
+    overflow-y: auto;
+    padding-top: 0;
   }
 
   @media screen and (max-width: 800px) {
